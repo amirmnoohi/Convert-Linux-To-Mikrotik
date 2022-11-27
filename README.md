@@ -20,14 +20,18 @@ echo u > /proc/sysrq-trigger
 ```
 
 Check main disk using lsblk command like below image:
+
 ```
 lsblk
 ```
+![image](https://user-images.githubusercontent.com/19514168/204160863-3bcd54fb-073e-41e0-9369-681fad69fc9a.png)
+
+**important note: if you don't set your disk device correctly, mikrotik won't boot correctly afer reboot.**
 
 
 ### Write image to disk
 ```
-dd if=chr.img bs=1024 of=/dev/vda
+dd if=chr.img bs=1024 of=/dev/vda  # you should change /dev/vda to appropriate disk device
 ```
 
 
