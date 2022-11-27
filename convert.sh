@@ -1,24 +1,16 @@
 #!/bin/bash
+
 # for VMWARE:
-wget https://download.mikrotik.com/routeros/6.48.6/chr-6.48.6.img.zip -O chr.img.zip  && \
+wget https://download.mikrotik.com/routeros/6.48.6/chr-6.48.6.img.zip -O chr.img.zip
 
 # for KVM:
-# wget https://download.mikrotik.com/routeros/7.1/chr-7.1.img.zip -O chr.img.zip
-gunzip -c chr.img.zip > chr.img  && \
-mount -o loop,offset=512 chr.img /mnt && \
-ADDRESS=`ip addr show eth0 | grep global | cut -d' ' -f 6 | head -n 1` && \
-GATEWAY=`ip route list | grep default | cut -d' ' -f 3` && \
-echo "/ip address add address=$ADDRESS interface=[/interface ethernet find where name=ether1]
-/ip route add gateway=$GATEWAY
-/ip service disable telnet
-/user set 0 name=root password=xxxxxx
- " > /mnt/rw/autorun.scr && \
-umount /mnt && \
-echo u > /proc/sysrq-trigger && \
-dd if=chr.img bs=1024 of=/dev/vda && \
-echo "sync disk" && \
-echo s > /proc/sysrq-trigger && \
-echo "Sleep 5 seconds" && \
-sleep 5 && \
-echo "Ok, reboot" && \
+wget https://download.mikrotik.com/routeros/7.1/chr-7.1.img.zip -O chr.img.zip
+
+echo u > /proc/sysrq-trigger 
+
+# Check main disk using lsblk command
+dd if=chr.img bs=1024 of=/dev/vda
+echo s > /proc/sysrq-trigger 
 echo b > /proc/sysrq-trigger
+
+# Then Configure Network using Console manually
