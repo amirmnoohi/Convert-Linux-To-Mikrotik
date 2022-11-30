@@ -5,14 +5,14 @@
 ### For VMWare VMs Download below image:
 
 ```
-wget https://github.com/amirmnoohi/Convert-Linux-To-Mikrotik/releases/download/v1/chr-vmware.img -O chr.img.zip
+wget https://github.com/amirmnoohi/Convert-Linux-To-Mikrotik/releases/download/v1/chr-vmware.img -O chr.img
 ```
 
 
 ### For KVM VMs Download below image:
 
 ```
-wget https://github.com/amirmnoohi/Convert-Linux-To-Mikrotik/releases/download/v1/chr-kvm.img -O chr.img.zip
+wget https://github.com/amirmnoohi/Convert-Linux-To-Mikrotik/releases/download/v1/chr-kvm.img -O chr.img
 ```
 
 ```
